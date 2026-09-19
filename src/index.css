@@ -1,15 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 @import "tailwindcss";
+
+@theme {
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --color-cyber-dark: #070a11;
+  --color-cyber-card: #0d1322;
+  --color-cyber-card-hover: #131c31;
+  --color-cyber-border: #1a263d;
+  --color-cyber-border-light: #253759;
+
+  --color-cyan-glow: #06b6d4;
+  --color-blue-glow: #3b82f6;
+
+  --color-risk-critical: #f43f5e;
+  --color-risk-high: #f97316;
+  --color-risk-med: #eab308;
+  --color-risk-low: #10b981;
+}
 
 @layer base {
   body {
-    @apply bg-slate-950 text-slate-100 min-h-screen antialiased selection:bg-rose-500 selection:text-white;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: #070a11;
+    color: #f1f5f9;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Custom subtle scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #070a11;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #1a263d;
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #253759;
+  }
+
+  ::selection {
+    background-color: #06b6d4;
+    color: #070a11;
   }
 }
-
-#root {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
