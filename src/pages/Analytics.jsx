@@ -4,16 +4,14 @@ import RiskDistributionChart from '../components/RiskDistributionChart';
 export default function Analytics() {
   return (
     <div className="space-y-6">
-      <div className="border-b border-cyber-border pb-4">
-        <div className="flex items-center gap-2 text-xs font-mono text-slate-400">
-          <span className="px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400 font-bold border border-cyan-500/20">
-            ANALYTICS & METRICS
+      <div className="border-b border-white/10 pb-5">
+        <div className="flex items-center gap-2 text-xs font-mono text-slate-300">
+          <span className="px-3 py-1 rounded-full bg-white/10 text-white font-bold border border-white/20 backdrop-blur-md shadow-xs">
+            ✦ ANALYTICS & METRICS
           </span>
-          <span>•</span>
-          <span>threats.shieldcommunity.io</span>
         </div>
-        <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-100 tracking-tight font-sans mt-1">
-          Threat Analytics & Vector Intelligence
+        <h1 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight font-sans mt-2">
+          Threat Analytics & <span className="font-serif italic font-normal text-slate-300">Vector Intelligence</span>
         </h1>
         <p className="text-xs sm:text-sm text-slate-400 mt-1">
           Historical timeline trends and vector classification breakdown from SQLite core.

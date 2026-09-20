@@ -8,23 +8,21 @@ export default function Console({ threats }) {
     <div className="space-y-6">
       
       {/* Overview Section Banner */}
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-cyber-border pb-4">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-white/10 pb-5">
         <div>
-          <div className="flex items-center gap-2 text-xs font-mono text-slate-400">
-            <span className="px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400 font-bold border border-cyan-500/20">
-              AI TELEMETRY SOC CONSOLE
+          <div className="flex items-center gap-2 text-xs font-mono text-slate-300">
+            <span className="px-3 py-1 rounded-full bg-white/10 text-white font-bold border border-white/20 backdrop-blur-md shadow-xs">
+              ✦ AI TELEMETRY SOC CONSOLE
             </span>
-            <span>•</span>
-            <span>threats.shieldcommunity.io</span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-100 tracking-tight font-sans mt-1">
-            Threat Detection Overview
+          <h1 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight font-sans mt-2">
+            Threat Detection <span className="font-serif italic font-normal text-slate-300">Overview</span>
           </h1>
         </div>
 
         <div className="flex items-center gap-2 text-xs font-mono">
-          <span className="px-3 py-1.5 rounded-lg bg-cyber-card border border-cyber-border text-slate-300 flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+          <span className="px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 text-slate-200 flex items-center gap-2 backdrop-blur-md shadow-xs">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
             Shield AI Engine Connected
           </span>
         </div>

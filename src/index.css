@@ -1,55 +1,196 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
-  --color-cyber-dark: #070a11;
-  --color-cyber-card: #0d1322;
-  --color-cyber-card-hover: #131c31;
-  --color-cyber-border: #1a263d;
-  --color-cyber-border-light: #253759;
+  --color-cyber-dark: #07090e;
+  --color-cyber-card: rgba(14, 18, 27, 0.75);
+  --color-cyber-card-hover: rgba(22, 28, 42, 0.9);
+  --color-cyber-border: rgba(255, 255, 255, 0.1);
+  --color-cyber-border-light: rgba(255, 255, 255, 0.2);
 
-  --color-cyan-glow: #06b6d4;
-  --color-blue-glow: #3b82f6;
-
-  --color-risk-critical: #f43f5e;
-  --color-risk-high: #f97316;
-  --color-risk-med: #eab308;
-  --color-risk-low: #10b981;
+  --color-risk-critical: #e11d48;
+  --color-risk-high: #ea580c;
+  --color-risk-med: #d97706;
+  --color-risk-low: #059669;
 }
 
 @layer base {
   body {
-    background-color: #070a11;
-    color: #f1f5f9;
-    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    background-color: #06080d;
+    color: #f8fafc;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     min-height: 100vh;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    perspective: 1200px;
   }
 
-  /* Custom subtle scrollbar */
   ::-webkit-scrollbar {
     width: 6px;
     height: 6px;
   }
 
   ::-webkit-scrollbar-track {
-    background: #070a11;
+    background: #06080d;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #1a263d;
+    background: rgba(255, 255, 255, 0.18);
     border-radius: 3px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #253759;
+    background: rgba(255, 255, 255, 0.35);
   }
 
   ::selection {
-    background-color: #06b6d4;
-    color: #070a11;
+    background-color: #ffffff;
+    color: #06080d;
+  }
+}
+
+/* 3D Web Page & Metallic Components */
+@layer components {
+
+  /* 3D Glass Card Container with Top Bevel Specular Highlight & Depth */
+  .card-3d {
+    background: linear-gradient(145deg, rgba(20, 26, 38, 0.65) 0%, rgba(9, 12, 19, 0.8) 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-top: 1px solid rgba(255, 255, 255, 0.28);
+    border-left: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 
+      inset 0 1px 0 rgba(255, 255, 255, 0.2),
+      inset 0 -1px 2px rgba(0, 0, 0, 0.6),
+      0 12px 30px -10px rgba(0, 0, 0, 0.6),
+      0 1px 3px rgba(0, 0, 0, 0.4);
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
+    transform-style: preserve-3d;
+  }
+
+  .card-3d:hover {
+    transform: translateY(-3px) translateZ(5px);
+    border-color: rgba(255, 255, 255, 0.25);
+    border-top-color: rgba(255, 255, 255, 0.45);
+    box-shadow: 
+      inset 0 1px 0 rgba(255, 255, 255, 0.35),
+      0 20px 40px -12px rgba(0, 0, 0, 0.75),
+      0 0 20px rgba(255, 255, 255, 0.04);
+  }
+
+  /* 3D Primary Shiny Metallic White/Silver Button */
+  .btn-3d-primary {
+    background: linear-gradient(180deg, #ffffff 0%, #e2e8f0 45%, #cbd5e1 100%);
+    color: #0b0f17;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    border: 1px solid #ffffff;
+    border-bottom: 2px solid #94a3b8;
+    border-radius: 9999px;
+    box-shadow: 
+      inset 0 1px 0 #ffffff,
+      inset 0 -1px 2px rgba(0, 0, 0, 0.25),
+      0 4px 12px rgba(0, 0, 0, 0.3),
+      0 0 12px rgba(255, 255, 255, 0.2);
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .btn-3d-primary::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.7), transparent);
+    transition: 0.4s;
+  }
+
+  .btn-3d-primary:hover::after {
+    left: 140%;
+  }
+
+  .btn-3d-primary:hover {
+    background: linear-gradient(180deg, #ffffff 0%, #f1f5f9 50%, #e2e8f0 100%);
+    transform: translateY(-2px);
+    box-shadow: 
+      inset 0 1px 0 #ffffff,
+      0 8px 20px rgba(0, 0, 0, 0.4),
+      0 0 24px rgba(255, 255, 255, 0.35);
+  }
+
+  .btn-3d-primary:active {
+    transform: translateY(1px);
+    border-bottom-width: 1px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  /* 3D Secondary Translucent Metallic Button */
+  .btn-3d-secondary {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.03) 100%);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    color: #f1f5f9;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-top: 1px solid rgba(255, 255, 255, 0.4);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.4);
+    border-radius: 9999px;
+    box-shadow: 
+      inset 0 1px 0 rgba(255, 255, 255, 0.3),
+      0 4px 12px rgba(0, 0, 0, 0.35);
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    cursor: pointer;
+  }
+
+  .btn-3d-secondary:hover {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.08) 100%);
+    border-color: rgba(255, 255, 255, 0.4);
+    border-top-color: rgba(255, 255, 255, 0.7);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 
+      inset 0 1px 0 rgba(255, 255, 255, 0.5),
+      0 8px 18px rgba(0, 0, 0, 0.45);
+  }
+
+  .btn-3d-secondary:active {
+    transform: translateY(1px);
+    border-bottom-width: 1px;
+  }
+
+  /* 3D Dark Inset Input Box */
+  .input-3d {
+    background: rgba(8, 11, 18, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-top: 1px solid rgba(0, 0, 0, 0.5);
+    box-shadow: 
+      inset 0 2px 5px rgba(0, 0, 0, 0.5),
+      0 1px 0 rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    transition: all 0.2s ease;
+  }
+
+  .input-3d:focus {
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 
+      inset 0 2px 4px rgba(0, 0, 0, 0.4),
+      0 0 15px rgba(255, 255, 255, 0.15);
   }
 }

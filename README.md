@@ -1,16 +1,37 @@
-# React + Vite
+# Shield AI Threat Detection Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A high-performance Security Operations Center (SOC) web application built with **React 19**, **Vite**, **Tailwind CSS**, **Recharts**, **Node.js**, **Express**, and **SQLite**.
 
-Currently, two official plugins are available:
+Features an HTML5 Canvas 3D particle stardust background, 3D metallic UI components, PII parameter sanitization, real-time telemetry stream, and persistent SQLite database ingestion.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## Complete Project Documentation
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+For a full architectural breakdown and a complete guide explaining the exact function of **every button and interactive control** in the application, please see:
 
-## Expanding the ESLint configuration
+👉 **[PROJECT_OVERVIEW.md](./PROJECT_OVERVIEW.md)**
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## Quick Start Guide
+
+### 1. Start Backend Server (Express + SQLite)
+```powershell
+cd threat-backend
+npm install
+node server.js
+```
+*(Runs on `http://localhost:5000` with SQLite database initialized)*
+
+### 2. Start Frontend App (React + Vite)
+```powershell
+npm install
+npm run dev
+```
+*(Runs on `http://localhost:5173`)*
+
+---
+
+## License
+ISC

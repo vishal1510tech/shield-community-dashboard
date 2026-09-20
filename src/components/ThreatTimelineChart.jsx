@@ -6,42 +6,42 @@ export default function ThreatTimelineChart() {
   const [timeframe, setTimeframe] = useState('24h');
 
   return (
-    <div className="bg-cyber-card border border-cyber-border rounded-xl p-5 space-y-4">
+    <div className="card-3d rounded-2xl p-5 space-y-4">
       
       {/* Chart Header & Controls */}
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-cyber-border pb-3">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-white/10 pb-4">
         <div>
           <div className="flex items-center gap-2">
-            <h3 className="text-sm font-bold text-slate-100 uppercase tracking-wider font-sans flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-cyan-400"></span>
+            <h3 className="text-sm font-bold text-white uppercase tracking-wider font-sans flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-slate-200 animate-pulse"></span>
               24-Hour Threat Ingestion & Anomaly Timeline
             </h3>
           </div>
-          <p className="text-xs text-slate-400 mt-0.5">Real-time threat detection volume telemetry over 24-hour cycle.</p>
+          <p className="text-xs text-slate-400 mt-1">Real-time threat detection volume telemetry over 24-hour cycle.</p>
         </div>
 
         {/* Legend & Filter pills */}
         <div className="flex items-center gap-3">
           <div className="hidden sm:flex items-center gap-3 text-[11px] font-mono">
-            <span className="flex items-center gap-1.5 text-cyan-400">
-              <span className="w-2.5 h-2.5 rounded-xs bg-cyan-500"></span>
+            <span className="flex items-center gap-1.5 text-slate-200">
+              <span className="w-2.5 h-2.5 rounded-full bg-white"></span>
               Anomalies
             </span>
-            <span className="flex items-center gap-1.5 text-rose-400">
-              <span className="w-2.5 h-2.5 rounded-xs bg-rose-500"></span>
+            <span className="flex items-center gap-1.5 text-rose-300">
+              <span className="w-2.5 h-2.5 rounded-full bg-rose-400"></span>
               Blocked
             </span>
           </div>
 
-          <div className="flex bg-cyber-dark p-0.5 border border-cyber-border rounded-lg text-xs font-mono">
+          <div className="flex bg-black/40 p-1 border border-white/15 rounded-xl text-xs font-mono backdrop-blur-md">
             {['24h', '7d', '30d'].map((t) => (
               <button
                 key={t}
                 onClick={() => setTimeframe(t)}
-                className={`px-2.5 py-1 rounded-md transition ${
+                className={`px-3 py-1 rounded-lg transition-all ${
                   timeframe === t 
-                    ? 'bg-cyan-500 text-cyber-dark font-extrabold shadow-xs shadow-cyan-500/20' 
-                    : 'text-slate-400 hover:text-slate-200'
+                    ? 'btn-3d-primary py-0.5 px-2.5 rounded-lg text-xs' 
+                    : 'text-slate-400 hover:text-white'
                 }`}
               >
                 {t}
@@ -56,9 +56,9 @@ export default function ThreatTimelineChart() {
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart data={THREAT_TIMELINE_DATA} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
             <defs>
-              <linearGradient id="cyanGradient" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#06b6d4" stopOpacity={0.4} />
-                <stop offset="95%" stopColor="#06b6d4" stopOpacity={0.0} />
+              <linearGradient id="silverGradient" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="5%" stopColor="#ffffff" stopOpacity={0.4} />
+                <stop offset="95%" stopColor="#ffffff" stopOpacity={0.0} />
               </linearGradient>
               <linearGradient id="roseGradient" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="5%" stopColor="#f43f5e" stopOpacity={0.4} />
@@ -66,7 +66,7 @@ export default function ThreatTimelineChart() {
               </linearGradient>
             </defs>
 
-            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#1a263d" />
+            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="rgba(255, 255, 255, 0.1)" />
             
             <XAxis 
               dataKey="time" 
@@ -85,13 +85,13 @@ export default function ThreatTimelineChart() {
 
             <Tooltip 
               contentStyle={{ 
-                backgroundColor: '#0d1322', 
-                borderRadius: '8px', 
-                borderColor: '#1a263d', 
-                color: '#f8fafc', 
+                backgroundColor: 'rgba(10, 14, 24, 0.95)', 
+                borderRadius: '12px', 
+                borderColor: 'rgba(255, 255, 255, 0.2)', 
+                color: '#ffffff', 
                 fontSize: '12px', 
                 fontFamily: 'monospace',
-                boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.5)'
+                boxShadow: '0 10px 30px rgba(0, 0, 0, 0.6)'
               }}
             />
 
@@ -99,10 +99,10 @@ export default function ThreatTimelineChart() {
               type="monotone" 
               dataKey="anomaly" 
               name="Anomalous Traffic" 
-              stroke="#06b6d4" 
+              stroke="#ffffff" 
               strokeWidth={2} 
               fillOpacity={1} 
-              fill="url(#cyanGradient)" 
+              fill="url(#silverGradient)" 
             />
 
             <Area 

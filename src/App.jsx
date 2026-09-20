@@ -6,6 +6,7 @@ import Console from './pages/Console';
 import ReportForm from './pages/ReportForm';
 import LiveFeed from './pages/LiveFeed';
 import Analytics from './pages/Analytics';
+import ParticleWaveBackground from './components/ParticleWaveBackground';
 import { useThreats } from './hooks/useThreats';
 
 function App() {
@@ -14,8 +15,10 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="min-h-screen bg-cyber-dark text-slate-100 font-sans flex">
-        
+      <div className="min-h-screen bg-transparent text-slate-100 font-sans flex relative overflow-x-hidden">
+        {/* Animated 3D Particle & Volumetric Infinity Wave Canvas Background */}
+        <ParticleWaveBackground />
+
         {/* Left Vertical Navigation Sidebar */}
         <Sidebar 
           isOpen={sidebarOpen} 
@@ -23,7 +26,7 @@ function App() {
         />
 
         {/* Main Content Area (Offset for Desktop Sidebar) */}
-        <div className="flex-1 flex flex-col lg:pl-64 min-w-0">
+        <div className="flex-1 flex flex-col lg:pl-64 min-w-0 relative z-10">
           
           {/* Topbar Header */}
           <Topbar 
@@ -52,15 +55,10 @@ function App() {
             </Routes>
           </main>
 
-          {/* Footer Bar */}
-          <footer className="border-t border-cyber-border bg-cyber-dark py-4 text-xs font-mono text-slate-500">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row justify-between items-center gap-2">
-              <p>© {new Date().getFullYear()} threats.shieldcommunity.io — Shield AI Threat Detection System.</p>
-              <div className="flex items-center gap-3 text-[11px] text-slate-400">
-                <span>SQLite Persistent Core</span>
-                <span>•</span>
-                <span className="text-cyan-400 font-bold">Neural Model v4.2</span>
-              </div>
+          {/* Footer Bar - Clean, minimal footer */}
+          <footer className="border-t border-white/10 bg-black/40 backdrop-blur-md py-4 text-xs font-sans text-slate-400">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 flex justify-between items-center">
+              <p>© {new Date().getFullYear()} Shield AI Threat Detection System.</p>
             </div>
           </footer>
 

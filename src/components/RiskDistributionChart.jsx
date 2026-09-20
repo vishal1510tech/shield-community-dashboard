@@ -3,16 +3,16 @@ import { CATEGORY_BREAKDOWN } from '../data/mockThreats';
 
 export default function RiskDistributionChart() {
   return (
-    <div className="bg-cyber-card border border-cyber-border rounded-xl p-5 space-y-4">
+    <div className="card-3d rounded-2xl p-5 space-y-4">
       
-      <div className="border-b border-cyber-border pb-3 flex justify-between items-center">
+      <div className="border-b border-white/10 pb-4 flex justify-between items-center">
         <div>
-          <h3 className="text-sm font-bold text-slate-100 uppercase tracking-wider font-sans">
+          <h3 className="text-sm font-bold text-white uppercase tracking-wider font-sans">
             Vector Classification
           </h3>
           <p className="text-xs text-slate-400 mt-0.5">Threat distribution across active vectors.</p>
         </div>
-        <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-cyber-dark text-cyan-400 border border-cyber-border font-bold">
+        <span className="text-[10px] font-mono px-3 py-1 rounded-full bg-white/10 text-slate-200 border border-white/20 font-bold backdrop-blur-md">
           4 Categories
         </span>
       </div>
@@ -31,17 +31,18 @@ export default function RiskDistributionChart() {
               dataKey="value"
             >
               {CATEGORY_BREAKDOWN.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={entry.color} stroke="#0d1322" strokeWidth={2} />
+                <Cell key={`cell-${index}`} fill={entry.color} stroke="rgba(10, 14, 24, 0.8)" strokeWidth={2} />
               ))}
             </Pie>
             <Tooltip
               contentStyle={{
-                backgroundColor: '#0d1322',
-                borderRadius: '8px',
-                borderColor: '#1a263d',
-                color: '#f8fafc',
+                backgroundColor: 'rgba(10, 14, 24, 0.95)',
+                borderRadius: '12px',
+                borderColor: 'rgba(255, 255, 255, 0.2)',
+                color: '#ffffff',
                 fontSize: '12px',
-                fontFamily: 'monospace'
+                fontFamily: 'monospace',
+                boxShadow: '0 10px 30px rgba(0, 0, 0, 0.6)'
               }}
             />
           </PieChart>
@@ -49,7 +50,7 @@ export default function RiskDistributionChart() {
 
         {/* Center Label inside Donut */}
         <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none font-mono">
-          <span className="text-xl font-extrabold text-slate-100">1,482</span>
+          <span className="text-xl font-extrabold text-white">1,482</span>
           <span className="text-[10px] uppercase text-slate-400 font-semibold">Total Threat Log</span>
         </div>
       </div>
@@ -57,14 +58,14 @@ export default function RiskDistributionChart() {
       {/* Category Legends */}
       <div className="space-y-2 pt-1 font-mono text-xs">
         {CATEGORY_BREAKDOWN.map((item) => (
-          <div key={item.name} className="flex justify-between items-center p-2 rounded-lg bg-cyber-dark/60 border border-cyber-border/60">
+          <div key={item.name} className="flex justify-between items-center p-2.5 rounded-xl bg-black/40 border border-white/10 backdrop-blur-md">
             <div className="flex items-center gap-2 truncate pr-2">
               <span className="w-2.5 h-2.5 rounded-full shrink-0" style={{ backgroundColor: item.color }}></span>
-              <span className="text-slate-300 font-sans truncate text-xs font-medium">{item.name}</span>
+              <span className="text-slate-200 font-sans truncate text-xs font-medium">{item.name}</span>
             </div>
             <div className="flex items-center gap-2 shrink-0">
               <span className="text-slate-400 text-[11px] font-semibold">{item.count}</span>
-              <span className="px-1.5 py-0.5 rounded text-[10px] font-bold text-slate-100 bg-cyber-card border border-cyber-border">
+              <span className="px-2 py-0.5 rounded-full text-[10px] font-bold text-white bg-white/10 border border-white/20">
                 {item.value}%
               </span>
             </div>
